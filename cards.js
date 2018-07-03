@@ -65,9 +65,19 @@ var previousTarget = null;
 var delay = 1200
 
 // Duplicate cardsArray and shuffle order. - WORKS
-var gameGrid = cardArray.concat(cardArray).sort(function () {
-  return 0.5 - Math.random();
-});
+var gameGrid = cardArray.concat(cardArray).shuffle();
+
+// Shuffle function
+function shuffle(a) {
+    var j, x, i;
+    for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+    }
+    return a;
+  }
 
 // Create div elements
 $.each(gameGrid, function(key, value) {
@@ -143,11 +153,6 @@ grid.addEventListener('click', function(e) {
 })
 
 // Allow user to start new game
-var button = document.getElementById('button').addEventListener('click', function(e){
-  newGame();
-})
-
-// New Game function
-function newGame(){
+var button = document.getElementById('button').addEventListener('click', function(){
   window.location.reload()
-}
+})
