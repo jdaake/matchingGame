@@ -105,7 +105,6 @@ function match(){
   var selected = document.querySelectorAll('.selected');
   selected.forEach(card => {
     card.classList.add('match');
-    // card.classList.remove('selected')
   });
 }
 
